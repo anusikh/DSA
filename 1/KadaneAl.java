@@ -1,20 +1,13 @@
 // Kadane's algorithm
 
-class Main{
-    public static void main (String[] args) {
-        int[] arr = {-2, 3, -1, 4, -1, 6, 3, -1};
-        
-        int meh = 0;
-        int msf = -9999;
-        
-        for(int i=0;i<arr.length;i++){
-            meh = meh + arr[i];
-            if(meh<arr[i])
-                meh = arr[i];
-            if(msf<meh)
-                msf = meh;
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int result = nums[0];
+        int sum = nums[0];
+        for(int i=1; i<nums.length; i++){
+            sum = Math.max(nums[i], sum + nums[i]);
+            result = Math.max(result, sum);
         }
-        
-        System.out.println(msf);
+            return result;
     }
 }

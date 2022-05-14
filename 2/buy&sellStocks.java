@@ -1,19 +1,23 @@
 // Buy and sell stocks
 // Also called Valley peak approach
 
-class Main{
-    
-    static int maxProf(int prices[]){
-        int maxProfit = 0;
-        for (int i = 1; i < prices.length; i++)
-            if (prices[i] > prices[i - 1])
-                maxProfit += prices[i] - prices[i - 1];
-        return maxProfit;
-    }
-    
-    public static void main (String[] args) {
-        int arr[] = {100, 180, 260, 310, 40, 535, 695 };
-                    
-        System.out.println(maxProf(arr));
+class Solution {
+    public int maxProfit(int prices[]){
+        int res = 0;
+        int prof = 0;
+        int i=0;
+        int j=1;
+        while(j<prices.length){
+            if(prices[j]>=prices[i]){
+                prof = prices[j] - prices[i];
+                res = Math.max(prof, res);
+                j++;
+            }
+            else{
+                i++;
+            }
+        }
+        
+        return res;
     }
 }
